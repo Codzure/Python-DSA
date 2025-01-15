@@ -1,0 +1,13 @@
+# Create an empty list to store the user input
+input_array = []
+
+# Get the number of elements to be added to the array
+num_elements = int(input("Enter the number of elements you want to add to the array: "))
+
+# Loop to get the elements from the user
+for i in range(num_elements):
+    element = int(input(f"Enter element {i+1}: "))
+    input_array.append(element)
+
+# Print the array
+print("The input array is:", input_array)
