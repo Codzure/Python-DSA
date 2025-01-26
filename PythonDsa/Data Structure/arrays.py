@@ -16,17 +16,17 @@ print("Second element:", numbers[1])
 numbers.append(6)
 print("Array after append:", numbers)
 
-numbers.extend([7, 8, 9])
+numbers.extend([7, 8, 9]) # Adding multiple elements
 print("Array after extend:", numbers)
 
-numbers.insert(0, 0)
+numbers.insert(0, 0) # Inserting element at the beginning
 print("Array after insert:", numbers)
 
 # Removing elements
-numbers.remove(3)
+numbers.remove(3) # Removing element 3
 print("Array after remove:", numbers)
 
-popped_element = numbers.pop()
+popped_element = numbers.pop() # Removing the last element
 print("Popped element:", popped_element)
 print("Array after pop:", numbers)
 
@@ -44,7 +44,7 @@ index = numbers.index(4)
 print("Index of element 4:", index)
 
 # Reversing the array
-numbers.reverse()
+numbers.reverse() # Reversing the array
 print("Array after reverse:", numbers)
 
 # Getting the buffer info
