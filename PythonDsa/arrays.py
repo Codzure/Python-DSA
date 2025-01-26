@@ -6,7 +6,7 @@ import array as arr
 numbers = arr.array('i', [1, 2, 3, 4, 5])
 
 # Display the array
-print("Array:", numbers)
+print("Array:", numbers[:]) # Output: Array: array('i', [1, 2, 3, 4, 5])
 
 # Accessing elements
 print("First element:", numbers[0])
