@@ -94,15 +94,100 @@ class LinkedList:
             # The method decrements the length of the linked list and handles the case where the linked list becomes empty.
             # Finally, it returns the removed node.
             # This method has a time complexity of O(n) because it traverses the entire linked list to find the last node.
-            # The space complexity is O(1) because it uses a constant amount of extra space regardless of the size of the linked list.      
+            # The space complexity is O(1) because it uses a constant amount of extra space regardless of the size of the linked list.   
+           
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+
+        if self.length == 0:
+                self.tail = None
+
+        return temp
+    
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+
+        return temp
+    
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+    
+    def insert_value(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+    
+    def remove_value(self, index, value):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+    
+    def reverse(self):
+        if self.length == 0:
+            return None
+        
+        pre = None
+        current = self.head
+        self.tail = current
+
+        while current is not None:
+            temp = current.next
+            current.next = pre
+            pre = current
+            current = temp
+
+        self.head = pre
+        return True
+             
 
 my_linked_list = LinkedList(1)
 my_linked_list.append(2)
-my_linked_list.append(3)
 my_linked_list.append(4)
+my_linked_list.append(3)
 my_linked_list.append(5)
-my_linked_list.pop(5)
-my_linked_list.prepend(10) # 
+my_linked_list.set_value(1, 89)
+my_linked_list.insert_value(2, 100)
+my_linked_list.remove_value(2, 100)
+my_linked_list.reverse()
 
+
+# my_linked_list.pop_first()
+# my_linked_list.pop(5)
+# my_linked_list.prepend(10)
+# print(my_linked_list.get(2))
 
 my_linked_list.print_linked_list()
